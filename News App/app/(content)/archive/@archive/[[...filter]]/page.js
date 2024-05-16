@@ -6,7 +6,7 @@ import {
   getAvailableNewsMonths,
   getNewsForYearAndMonth,
   getAllNews,
-} from "@/app/lib/news";
+} from "@/lib/news";
 import NewsList from "@/components/News-List";
 
 export default function FilteredNewsPage({ params }) {

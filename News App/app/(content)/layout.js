@@ -1,9 +1,9 @@
 import MainHeader from "@/components/Main-Header";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata = {
-  title: "Next.js Page Routing & Rendering",
-  description: "Learn how to route to different pages.",
+  title: "News section",
+  description: "Explore and read news",
 };
 
 export default function RootLayout({ children }) {
