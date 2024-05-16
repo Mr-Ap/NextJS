@@ -1,11 +1,19 @@
-import { DUMMY_NEWS } from '@/dummy-news';
+import { DUMMY_NEWS } from "@/dummy-news";
 
-export function getAllNews() {
-  return DUMMY_NEWS;
+import sql from "better-sqlite3";
+
+const db = sql("data.db");
+
+export async function getAllNews() {
+  const news = db.prepare(`SELECT * from news`).all();
+  await new Promise((res) => setTimeout(res, 2000));
+  return news;
 }
 
 export function getLatestNews() {
-  return DUMMY_NEWS.slice(0, 3);
+  const news = db.prepare(`SELECT * from news LIMIT 3`).all();
+  
+  return news;
 }
 
 export function getAvailableNewsYears() {
