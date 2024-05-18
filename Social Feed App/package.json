@@ -1,7 +1,9 @@
 {
-  "name": "mutation",
+  "name": "Social feed App",
   "version": "0.1.0",
   "private": true,
+  "author": "Avadhut Patil",
+  "description": "data mutation in nextJs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

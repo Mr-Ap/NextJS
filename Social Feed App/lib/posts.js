@@ -35,12 +35,12 @@ function initDb() {
   if (stmt.get().count === 0) {
     db.exec(`
     INSERT INTO users (first_name, last_name, email)
-    VALUES ('John', 'Doe', 'john@example.com')
+    VALUES ('Avadhut', 'Patil', 'ap@example.com')
   `);
 
     db.exec(`
     INSERT INTO users (first_name, last_name, email)
-    VALUES ('Max', 'Schwarz', 'max@example.com')
+    VALUES ('Test', 'User', 'test@example.com')
   `);
   }
 }

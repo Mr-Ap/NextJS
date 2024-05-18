@@ -102,6 +102,12 @@ main {
   color: #eee7ea;
 }
 
+.form-control textarea{
+  resize: vertical;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -188,6 +194,7 @@ main {
 .like-button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .like-button svg {
@@ -200,8 +207,4 @@ main {
 .like-button:hover svg,
 .liked .like-button svg {
   fill: #e32195;
-}
-
-.liked .like-button:hover svg {
-  fill: transparent;
 }
