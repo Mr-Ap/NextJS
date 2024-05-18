@@ -50,6 +50,6 @@ export async function togglePostLike(postId, userId, formData) {
     await updatePostLikeStatus(postId, userId);
     revalidatePath('/feed');
   } catch (error) {
-    throw new Error("Like status update failed, please try again later!");
+    console.error("Like status update failed, please try again later!");
   }
 }
