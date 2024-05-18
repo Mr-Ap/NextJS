@@ -3,7 +3,7 @@
 import { uploadImage } from "@/lib/cloudnary";
 import { storePost, updatePostLikeStatus } from "@/lib/posts";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 export async function createPost(prevState, formData) {
   const title = formData.get("title");
@@ -23,7 +23,7 @@ export async function createPost(prevState, formData) {
 
   if (errors.length > 0) return { errors };
 
-  let imageUrl;
+  let imageUrl = image.name;
   //uploading files to cloudinary
   /*
   try {
@@ -42,13 +42,15 @@ export async function createPost(prevState, formData) {
     userId: 1,
   });
 
+  revalidatePath("/", "layout");
+
   redirect("/feed");
 }
 
 export async function togglePostLike(postId, userId, formData) {
   try {
     await updatePostLikeStatus(postId, userId);
-    revalidatePath('/feed');
+    revalidatePath("/", "layout");
   } catch (error) {
     console.error("Like status update failed, please try again later!");
   }
