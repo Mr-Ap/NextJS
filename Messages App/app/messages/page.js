@@ -1,4 +1,5 @@
 import Messages from "@/components/messages";
+import { getMessages } from "@/lib/messages";
 import { unstable_noStore as next_noStore } from "next/cache";
 
 //Cache invalidation techniques at file level
@@ -26,6 +27,7 @@ export default async function MessagesPage() {
   //4. use next-revalidateTags -> onDemand
   //5. use noStore from next/cache
 
+  /*
   const response = await fetch("http://localhost:8080/messages", {
     //cache: "no-store",
     next: {
@@ -33,11 +35,17 @@ export default async function MessagesPage() {
       tags: ["msg"],
     },
   });
+  const messages = await response.json();
+  */
 
   //5. component level cache invalidation
   /*  next_noStore();*/
 
-  const messages = await response.json();
+  //When we have internal data source, like reading directly from DB,
+  //NextJs, by default, does not perform request de-duplication.
+  //Need to wrap the it in cache function provided by react
+
+  const messages = await getMessages();
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;

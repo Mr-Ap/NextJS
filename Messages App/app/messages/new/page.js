@@ -8,10 +8,11 @@ export default function NewMessagePage() {
     "use server";
 
     const message = formData.get("message");
-    // addMessage(message);
-
     //invalidating cache using tags
-    revalidateTag("msg");
+    /*revalidateTag("msg");*/
+
+    addMessage(message);
+    revalidateTag("db-msg");
     redirect("/messages");
   }
 
