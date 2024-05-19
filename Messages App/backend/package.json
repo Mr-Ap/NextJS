@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "description": "understading caching in nextJs",
+  "author": "Avadhut Patil",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
