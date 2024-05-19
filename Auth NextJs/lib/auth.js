@@ -60,3 +60,20 @@ export async function validateRequest() {
   } catch (error) {}
   return result;
 }
+
+export async function removeAuthSession() {
+  const { session } = await validateRequest();
+  if (!session) {
+    return {
+      error: "Unauthorized!",
+    };
+  }
+
+  await lucia.invalidateSession(session.id);
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
+}

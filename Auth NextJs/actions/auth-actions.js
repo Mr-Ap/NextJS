@@ -1,8 +1,9 @@
 "use server";
 
-import { createAuthSession } from "@/lib/auth";
+import { createAuthSession, removeAuthSession } from "@/lib/auth";
 import { hashUserPassword, verifyPassword } from "@/lib/hash";
 import { createUser, findUserByEmail } from "@/lib/user";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function signUp(prevState, formData) {
@@ -68,6 +69,11 @@ export async function signIn(prevState, formData) {
   //create a session and redirect
   await createAuthSession(existingUser.id);
   redirect("/training");
+}
+
+export async function signOut() {
+  await removeAuthSession();
+  redirect("/");
 }
 
 export async function auth(mode, prevState, formData) {
